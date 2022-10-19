@@ -133,7 +133,6 @@ const clearBookmarks = function () {
     localStorage.clear('bookmarks');
 }
 
-// clearBookmarks();
 
 
 
@@ -144,7 +143,7 @@ export const uploadRecipe = async function (newRecipe) {
             .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
             .map(ing => {
                 const ingArr = ing[1].split(',').map(el => el.trim());
-                // const ingArr = ing[1].replaceAll(' ', '').split(',');
+                
                 if (ingArr.length !== 3)
                     throw new Error(
                         'Wrong ingredient fromat! Please use the correct format :)'
@@ -168,7 +167,7 @@ export const uploadRecipe = async function (newRecipe) {
         const data = await AJAX(`${API_URL}?key=${KEY}`, recipe)
         console.log(data)
 
-        //   const data = await AJAX(`${API_URL}?key=${KEY}`, recipe);
+        
         state.recipe = createRecipeObject(data);
         addBookMark(state.recipe);
     } catch (err) {
@@ -177,4 +176,3 @@ export const uploadRecipe = async function (newRecipe) {
 };
 
 
-// 93e83f09-bcfd-4966-9a94-3ced61f13b40
